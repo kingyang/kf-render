@@ -89,7 +89,8 @@ module.exports = function (grunt) {
         jshint: {
             options: {
                 ignores: [ 'src/base/canvg.js' ],
-                jshintrc: '.jshintrc'
+                jshintrc: '.jshintrc',
+                reporterOutput: ""
             },
             source: [ 'src/**/*.js' ]
         },

@@ -6,7 +6,6 @@ define( function ( require ) {
 
     var kity = require( "kity" ),
         FontManager = require( "font/manager" ),
-        $ = require( "jquery" ),
         FONT_CONF = require( "sysconf" ).font,
         CHAR_LIST = require( "char/char-list" ),
         NODE_LIST = [];
@@ -65,17 +64,10 @@ define( function ( require ) {
 
 
     function preload ( doc, fontInfo, callback ) {
-
-        $.get( fontInfo.meta.src, function ( data, state ) {
-
-            if ( state === "success" ) {
-                applyFonts( doc, fontInfo );
-            }
-
+        window.fetch(fontInfo.meta.src).then(function(){
+            applyFonts(doc, fontInfo);
             callback();
-
-        } );
-
+        });
     }
 
     function complete ( doc, callback ) {
